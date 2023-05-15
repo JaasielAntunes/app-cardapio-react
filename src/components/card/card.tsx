@@ -1,10 +1,10 @@
 interface CardProps {
     price: number,
     title: string,
-    image: string
+    img: string
 }
 
-export function Card({ price, image, title } : CardProps) {
+export function Card({ price, img, title } : CardProps) {
     return(
         <div className="card">
             <img src="" alt="" />
