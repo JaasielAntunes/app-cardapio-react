@@ -2,10 +2,6 @@
 
 * {
   font-family: "Poppins", sans-serif;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  background-color: rgb(201, 212, 175);
 }
 
 .container {
@@ -13,13 +9,13 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  width: 100vw;
+  width: 100vw
 }
 
 .card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+  gap: 15px;
 }
 
 .container button {
@@ -28,7 +24,7 @@
   font-weight: bold;
   position: fixed;
   bottom: 16px;
-  right: 23px;
+  right: 24px;
   transition: all 0.1s linear 0.1s;
 }
 

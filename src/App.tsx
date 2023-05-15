@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import './App.css'
 import { Card } from './components/card/card';
 import { useFoodData } from './hooks/useFoodData';
+import { CreateModal } from './modal/create-modal';
 
 function App() {
   const { data } = useFoodData();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(prev => !prev)
+  }
 
   return (
     <>
@@ -19,6 +26,8 @@ function App() {
               imgUrl={foodData.imgUrl}
             />)}
         </div>
+        {isModalOpen && <CreateModal />}
+        <button className="btn-novo" onClick={handleOpenModal}>Cadastrar Novo</button>
       </div>
     </>
   )
