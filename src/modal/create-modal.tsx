@@ -1,6 +1,13 @@
 import { useState } from "react"
 import { useFoodDataMutate } from "../hooks/useFoodDataMutate";
 import { FoodData } from "../interface/FoodData";
+import { NumericFormat } from "react-number-format";
+
+// ...
+
+export const MyInput: React.FC = () => {
+	return <NumericFormat />
+};
 
 import "./modal.css";
 
@@ -18,6 +25,25 @@ const Input = ({ label, value, updateValue }: InputProps) => {
         </>
     )
 }
+
+const PriceInput = ({ value, updateValue }: InputProps) => {
+    const handlePriceChange = (values: any) => {
+        updateValue(values.floatValue || '');
+    };
+
+    return (
+        <NumericFormat
+            value={value}
+            thousandSeparator={'.'}
+            decimalSeparator={','}
+            prefix={'R$ '}
+            decimalScale={2}
+            fixedDecimalScale={true}
+            allowNegative={false}
+            onValueChange={handlePriceChange}
+        />
+    );
+};
 
 export function CreateModal() {
     const [title, setTitle] = useState("");
@@ -40,7 +66,7 @@ export function CreateModal() {
                 <h2>Cadastre um novo item no cardápio</h2>
                 <form className="input-container">
                     <Input label="Nome" value={title} updateValue={setTitle} />
-                    <Input label="Preço" value={price} updateValue={setPrice} />
+                    <PriceInput label="Preço" value={price} updateValue={setPrice} />
                     <Input label="URL da imagem" value={imgUrl} updateValue={setImg} />
                 </form>
                 <button onClick={submit} className="btn-secondary">Cadastrar</button>
