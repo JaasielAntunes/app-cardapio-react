@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useFoodDataMutate } from "../hooks/useFoodDataMutate";
 import { FoodData } from "../interface/FoodData";
 import { NumericFormat } from "react-number-format";
@@ -6,7 +6,7 @@ import { NumericFormat } from "react-number-format";
 // ...
 
 export const MyInput: React.FC = () => {
-	return <NumericFormat />
+    return <NumericFormat />
 };
 
 import "./modal.css";
@@ -15,6 +15,10 @@ interface InputProps {
     label: string,
     value: string | number,
     updateValue(value: any): void
+}
+
+interface ModalProps {
+    closeModal(): void
 }
 
 const Input = ({ label, value, updateValue }: InputProps) => {
@@ -26,30 +30,33 @@ const Input = ({ label, value, updateValue }: InputProps) => {
     )
 }
 
-const PriceInput = ({ value, updateValue }: InputProps) => {
+const PriceInput = ({ label, value, updateValue }: InputProps) => {
     const handlePriceChange = (values: any) => {
         updateValue(values.floatValue || '');
     };
 
     return (
-        <NumericFormat
-            value={value}
-            thousandSeparator={'.'}
-            decimalSeparator={','}
-            prefix={'R$ '}
-            decimalScale={2}
-            fixedDecimalScale={true}
-            allowNegative={false}
-            onValueChange={handlePriceChange}
-        />
+        <>
+            <label>{label}</label>
+            <NumericFormat
+                value={value}
+                thousandSeparator={'.'}
+                decimalSeparator={','}
+                prefix={'R$ '}
+                decimalScale={2}
+                fixedDecimalScale={true}
+                allowNegative={false}
+                onValueChange={handlePriceChange}
+            />
+        </>
     );
 };
 
-export function CreateModal() {
+export function CreateModal({ closeModal }: ModalProps) {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [imgUrl, setImg] = useState("");
-    const { mutate } = useFoodDataMutate();
+    const { mutate, isSuccess, isLoading } = useFoodDataMutate();
 
     const submit = () => {
         const foodData: FoodData = {
@@ -60,16 +67,23 @@ export function CreateModal() {
         mutate(foodData)
     }
 
+    useEffect(() => {
+        if (!isSuccess) return
+        closeModal();
+    }, [isSuccess])
+
     return (
         <div className="modal-overlay">
             <div className="modal-body">
-                <h2>Cadastre um novo item no cardápio</h2>
+                <h2 className="texto-cadastre">Cadastre um novo item no cardápio</h2>
                 <form className="input-container">
                     <Input label="Nome" value={title} updateValue={setTitle} />
                     <PriceInput label="Preço" value={price} updateValue={setPrice} />
                     <Input label="URL da imagem" value={imgUrl} updateValue={setImg} />
                 </form>
-                <button onClick={submit} className="btn-secondary">Cadastrar</button>
+                <button onClick={submit} className="btn-secondary">
+                    {isLoading ? "Postando..." : "Cadastrar"}
+                </button>
             </div>
         </div>
     )

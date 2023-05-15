@@ -26,7 +26,7 @@ function App() {
               imgUrl={foodData.imgUrl}
             />)}
         </div>
-        {isModalOpen && <CreateModal />}
+        {isModalOpen && <CreateModal closeModal={handleOpenModal} />}
         <button className="btn-novo" onClick={handleOpenModal}>Cadastrar Novo</button>
       </div>
     </>

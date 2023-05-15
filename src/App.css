@@ -4,6 +4,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  background-color: #bdc3ca;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -13,9 +17,18 @@
 }
 
 .card-grid {
+  font-size: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
+}
+
+.card {
+  background-color: #94bbdd;
+}
+
+p, b {
+  background: #94bbdd;
 }
 
 .container button {

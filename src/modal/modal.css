@@ -66,6 +66,10 @@
     transform: scale(1);
 }
 
+.btn-secondary {
+    height: 35px;
+}
+
 .modal-overlay .modal-body .btn-secondary {
     border: 2px solid #f00606c5;
     cursor: pointer;
