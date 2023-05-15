@@ -1,28 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-color: rgb(201, 212, 175);
+}
+
 .container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
 }
 
 .card-grid {
-    display: grid;
-    grid-template-columns: 1fr 1r 1fr;
-    gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
 }
 
 .container button {
-    background-color: #0275d8;
-    color: white;
-    font-weight: bold;
-    position: fixed;
-    bottom: 16px;
-    right: 23px;
-    transition: all .1s linear .1s;
+  background-color: #0275d8;
+  color: white;
+  font-weight: bold;
+  position: fixed;
+  bottom: 16px;
+  right: 23px;
+  transition: all 0.1s linear 0.1s;
 }
 
 .container button:hover {
-    box-shadow: rgba(100, 100, 111, .2) 0px 7px 7px 0px;
-    transform: scale(1.1);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 7px 0px;
+  transform: scale(1.1);
 }

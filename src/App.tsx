@@ -6,17 +6,21 @@ function App() {
   const { data } = useFoodData();
 
   return (
-    <div className="container">
-      <h1>Cardápio</h1>
-      <div className="card-grid">
-        {data?.map(foodData => 
-        <Card 
-          price={foodData.price}
-          title={foodData.title} 
-          img={foodData.img}
-        />)}
+    <>
+      <br />
+      <div className="container">
+        <h1>Cardápio</h1>
+        <div className="card-grid">
+          {data?.map(foodData =>
+            <Card
+              key={foodData.id}
+              price={foodData.price}
+              title={foodData.title}
+              imgUrl={foodData.imgUrl}
+            />)}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
