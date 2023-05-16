@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react"
 import { useFoodDataMutate } from "../hooks/useFoodDataMutate";
 import { FoodData } from "../interface/FoodData";
@@ -47,6 +49,7 @@ const PriceInput = ({ label, value, updateValue }: InputProps) => {
                 fixedDecimalScale={true}
                 allowNegative={false}
                 onValueChange={handlePriceChange}
+                customInput={inputProps => <input {...inputProps} />}
             />
         </>
     );

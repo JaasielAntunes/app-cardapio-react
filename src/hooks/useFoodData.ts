@@ -6,7 +6,7 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/food/";
 
 const fetchData = async (): AxiosPromise<FoodData[]> => {
-    const response = axios.get(API_URL + 'listar-todos');
+    const response = axios.get(API_URL + 'listar');
     return response
 }
 

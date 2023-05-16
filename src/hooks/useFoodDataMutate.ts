@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation, useQueryClient } from "react-query";
 import { FoodData } from "../interface/FoodData";
 import { AxiosPromise } from "axios";
